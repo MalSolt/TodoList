@@ -1,0 +1,17 @@
+@import 'styles/vars';
+
+.wrapper {
+  height: 60px;
+}
+
+.label {
+  cursor: pointer;
+  color: $primary;
+}
+
+.input {
+  margin-top: 4px;
+  width: 100%;
+  padding: 4px;
+  border-radius: $border-raduis;
+}

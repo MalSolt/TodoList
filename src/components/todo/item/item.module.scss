@@ -1,29 +1,39 @@
 @import 'styles/vars';
 
 .wrapper {
-  width: 500px;
+  width: 100%;
   border-radius: $border-raduis;
   border: 1px solid $primary;
-  height: 40px;
-  padding: $padding-md;
+  min-height: 40px;
+  padding-left: 8px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
 .text {
-  color: $primary;
+  color: $light;
+  flex-grow: 1;
+  cursor: pointer;
+  word-break: break-all;
 }
 
 .delete {
   display: flex;
   justify-content: center;
-  width: 20px;
+  min-width: 24px;
   color: $secondary;
   font-size: 20px;
   font-weight: 900;
   cursor: pointer;
   transition: 0.2s;
   &:hover {
-    scale: 1.1;
+    scale: 1.2;
   }
+}
+
+.input {
+  width: 100%;
+  padding: 4px;
+  border-radius: $border-raduis;
 }
