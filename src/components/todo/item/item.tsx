@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import styles from './item.module.scss'
+import { Input } from 'components/common'
+import { useBoolean } from 'hooks/use-boolean'
+import { useState } from 'react'
 import { useTodoStore } from 'store'
 import { Todo } from 'types'
-import { useBoolean } from 'hooks/use-boolean'
+import styles from './item.module.scss'
 
 export const Item = ({ text, id }: Todo) => {
   const removeTodo = useTodoStore((state) => state.removeTodo)
@@ -14,8 +15,8 @@ export const Item = ({ text, id }: Todo) => {
     setNewText(event.target.value)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && text) {
+  const handleUpdateTodo = () => {
+    if (text) {
       setNewText('')
       updateTodo({ text: newText, id })
       closeEditing()
@@ -26,14 +27,12 @@ export const Item = ({ text, id }: Todo) => {
     <div className={styles.wrapper}>
       <div className={styles.text} onClick={openEditing}>
         {isEditing ? (
-          <input
+          <Input
             autoFocus
-            id='add-todo'
-            className={styles.input}
+            type='text'
             value={newText}
             onChange={handleChange}
-            type='text'
-            onKeyDown={handleKeyDown}
+            onEnter={handleUpdateTodo}
           />
         ) : (
           text

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { Input } from 'components/common'
+import { useState } from 'react'
 import { useTodoStore } from 'store'
 import styles from './add-todo.module.scss'
 
@@ -10,8 +11,8 @@ export const AddTodo = () => {
     setText(event.target.value)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && text) {
+  const handleAddTodo = () => {
+    if (text) {
       addTodo(text)
       setText('')
     }
@@ -22,14 +23,13 @@ export const AddTodo = () => {
       <label className={styles.label} htmlFor='add-todo'>
         add todo
       </label>
-      <input
+      <Input
         autoFocus
+        type='text'
         id='add-todo'
-        className={styles.input}
         value={text}
         onChange={handleChange}
-        type='text'
-        onKeyDown={handleKeyDown}
+        onEnter={handleAddTodo}
       />
     </div>
   )
